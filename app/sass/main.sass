@@ -1,0 +1,98 @@
+@import vars
+@import fonts
+@import libs
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+input, textarea
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+textarea:focus
+	&::-webkit-input-placeholder
+		color: transparent!important
+	&::-moz-placeholder
+		color: transparent!important
+	&::-ms-input-placeholder
+		color: transparent!important
+input:focus
+	&::-webkit-input-placeholder
+		color: transparent!important
+	&::-moz-placeholder
+		color: transparent!important
+	&::-ms-input-placeholder
+		color: transparent!important
+
+
+body
+	font-size: 12px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: 'Raleway', sans-serif
+	overflow-x: hidden
+	color: $text
+	background: #000
+
+// Custom Sass / Remove before use
+
+.container
+	max-width: 1365px
+	padding:
+		right: $gutter/2
+		left: $gutter/2
+	margin:
+		left: auto
+		right: auto
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.example-grid
+	display: grid
+	grid-gap: $gutter
+	grid-template-columns: 1fr 1fr
+	grid-template-areas: "left right"
+	> div:first-child
+		grid-area: left
+	> div:last-child
+		grid-area: right
+	+media-breakpoint-down(xs)
+		display: block
+		> div
+			padding: $gutter/2 0
+
+h1 .h1
+	font-size: 45px
+	font-weight: 
+	color: #fff
+	span
+		font-size: 80px
+		font-weight: 900
+
+h2 .h2
+	font-size: 30px
+	color: #000
+
+.btn
+	font-weight: 900
+	font-size: 12px
+	text-transform: uppercase
+	color: #fff
+	width: 265px
+	height: 70px
+	display: flex
+	justify-content: center
+	align-items: center
+	border: 5px solid #fff
+	border-radius: 40px
