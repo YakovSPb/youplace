@@ -5,44 +5,550 @@
 
 	<meta charset="utf-8">
 
-	<title>Title</title>
+	<title>Your Place</title>
 	<meta name="description" content="Startup HTML template OptimizedHTML 5">
-
 	<meta name="viewport" content="width=device-width">
-
 	<link rel="icon" href="img/favicon.png">
-	<meta property="og:image" content="img/@1x/preview.jpg">
-	
+	<meta property="og:image" content="">
+	<link rel="stylesheet" href="css/mouse-scroll.css">
+	<link rel="stylesheet" href="css/modal-window.css">
+	<link rel="stylesheet" href="css/scrollbar.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/preloader.css">
 	<link rel="stylesheet" href="css/styles.min.css">
-
 </head>
 
 <body>
 
-	<!-- Custom HTML / Remove before use -->
-
-	<div class="container">
-
-		<div class="parent"> <!-- Lazy Load Placeholder Generator: https://webdesign-master.ru/services/lazy/ -->
-			<img class="lazy img-responsive example-img"
-			src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
-			data-src="img/@1x/preview.jpg"
-			data-srcset="img/@1x/preview.jpg 1x, img/@2x/preview.jpg 2x"
-			alt="Start HTML5 Template">
+	<div class="preloader">
+		<div class="wrapper">
+			<span class="ball"></span>
+			<span class="ball"></span>
+			<span class="ball"></span>
+			<span class="ball"></span>
 		</div>
-		<br>
-		<h2>Welcome to startup HTML template OptimizedHTML 5!</h2>
-		<p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit. <em>Ad distinctio animi</em>, dolorum eaque praesentium unde aliquid, mollitia itaque voluptate quos modi et incidunt tempora fugiat voluptatum quia esse dolor repellat.</p>
-		<br>
-		<div class="example-grid">
-			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis quo vero molestias, esse doloribus corrupti, nemo minus ullam tempore tenetur magni aut quos soluta sit adipisci eius expedita amet non.</div>
-			<div>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.</div>
-		</div>
-		<a href="" class="btn">заказать звонок</a>
-
+		<div class="drop-shadow"></div>
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+			<defs>
+				<filter id="ball">
+					<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+					<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="ball" />
+					<feBlend in="SourceGraphic" in2="ball" />
+				</filter>
+			</defs>
+		</svg>
 	</div>
 
-	<script src="js/scripts.min.js"></script>
+	<div id="yak-my-modal" class="modal">
+		<div class="modal-content">
+			<span id="close-btn" class="close">&times;</span>
+			<div id="modal-body" class="modal-body">
+			</div>
+		</div>
+	</div>
 
+
+	<header class="header">
+		<div class="header-topline">
+			<div class="header__logo-inner">
+				<div class="logo">
+					<img class="logo--white" src="img/logo-white.png" alt="Logo">
+					<img class="logo--dark" src="img/logo.png" alt="Logo">
+				</div>
+				<a href="#my-menu" class="hamburger hamburger--collapse">
+					<div class="hamburger-box">
+						<div class="hamburger-inner"></div>
+					</div>
+				</a>
+			</div>
+
+
+		</div>
+		<nav class="m-menu" id="my-menu">
+			<ul class="m-menu__list">
+				<li><a href="#a_about_us">Немного о нас</a></li>
+				<li><a href="#about-items">Наши плюсы</a></li>
+				<li><a href="#sofa">О компании</a></li>
+				<li><a href="#sect-projects">Наши проекты</a></li>
+				<li><a href="#stages">Этапы работы</a></li>
+				<li><a href="#specialists">Специалисты</a></li>
+				<li><a href="#services">Услуги</a></li>
+				<li><a href="#comments">Отзывы</a></li>
+				<li><a target="_blank" class="m-menu__phone" href="tel:+78126421823">+7 812 642-18-23</a></li>
+				<li><a target="_blank" href="mailto:sales@yourplace.spb.ru">sales@yourplace.spb.ru</a></li>
+			</ul>
+			<div class="social">
+				<a target="_blank" href=""><svg class="social__vk" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12.145 19.5c3.472 0 2.234-2.198 2.502-2.83-.004-.472-.008-.926.008-1.202.22.062.739.325 1.811 1.367 1.655 1.67 2.078 2.665 3.415 2.665h2.461c.78 0 1.186-.323 1.389-.594.196-.262.388-.722.178-1.438-.549-1.724-3.751-4.701-3.95-5.015.03-.058.078-.135.103-.175h-.002c.632-.835 3.044-4.449 3.399-5.895.001-.002.002-.005.002-.008.192-.66.016-1.088-.166-1.33-.274-.362-.71-.545-1.299-.545h-2.461c-.824 0-1.449.415-1.765 1.172-.529 1.345-2.015 4.111-3.129 5.09-.034-1.387-.011-2.446.007-3.233.036-1.535.152-3.029-1.441-3.029h-3.868c-.998 0-1.953 1.09-.919 2.384.904 1.134.325 1.766.52 4.912-.76-.815-2.112-3.016-3.068-5.829-.268-.761-.674-1.466-1.817-1.466h-2.461c-.998 0-1.594.544-1.594 1.455 0 2.046 4.529 13.544 12.145 13.544zm-8.09-13.499c.217 0 .239 0 .4.457.979 2.883 3.175 7.149 4.779 7.149 1.205 0 1.205-1.235 1.205-1.7l-.001-3.702c-.066-1.225-.512-1.835-.805-2.205l3.508.004c.002.017-.02 4.095.01 5.083 0 1.403 1.114 2.207 2.853.447 1.835-2.071 3.104-5.167 3.155-5.293.075-.18.14-.241.376-.241h2.461.01c-.001.003-.001.006-.002.009-.225 1.05-2.446 4.396-3.189 5.435-.012.016-.023.033-.034.05-.327.534-.593 1.124.045 1.954h.001c.058.07.209.234.429.462.684.706 3.03 3.12 3.238 4.08-.138.022-.288.006-2.613.011-.495 0-.882-.74-2.359-2.23-1.328-1.292-2.19-1.82-2.975-1.82-1.524 0-1.413 1.237-1.399 2.733.005 1.622-.005 1.109.006 1.211-.089.035-.344.105-1.009.105-6.345 0-10.477-10.071-10.636-11.996.055-.005.812-.002 2.546-.003z"/></svg></a>
+				<a target="_blank" href=""><svg class="social__instagram" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> <path d="M363.273,0H148.728C66.719,0,0,66.719,0,148.728v214.544C0,445.281,66.719,512,148.728,512h214.544 C445.281,512,512,445.281,512,363.273V148.728C512,66.719,445.281,0,363.273,0z M472,363.272C472,423.225,423.225,472,363.273,472 H148.728C88.775,472,40,423.225,40,363.273V148.728C40,88.775,88.775,40,148.728,40h214.544C423.225,40,472,88.775,472,148.728 V363.272z"/> <path d="M256,118c-76.094,0-138,61.906-138,138s61.906,138,138,138s138-61.906,138-138S332.094,118,256,118z M256,354 c-54.037,0-98-43.963-98-98s43.963-98,98-98s98,43.963,98,98S310.037,354,256,354z"/> <circle cx="396" cy="116" r="20"/> </svg> </a>
+			</div>
+		</nav>
+
+		<div class="header__content">
+			<h1 class="h1 animated fadeInUp">Cтудия дизайна <span>интерьера</span></h1>
+			<div id="callback" class="btn header__btn animated fadeInUp">Заказать звонок</div>
+		</div>
+	</header>
+
+	<section class="about-us">
+
+		<div class="mouse-inner">
+			<div class="mouse-wrap">
+				<div class="mouse">
+					<div class="frame"><svg version="1.1" id="mouse" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 54.9 91" style="enable-background:new 0 0 54.9 91;" xml:space="preserve"> <path id="XMLID_173_" class="st0" linejoin="round" stroke-linecap="round" stroke-miterlimit="10" d="M27.4,3.6L27.4,3.6C14.2,3.6,3.5,14.3,3.5,27.5v36c0,13.2,10.7,23.9,23.9,23.9h0 c13.2,0,23.9-10.7,23.9-23.9v-36C51.4,14.3,40.7,3.6,27.4,3.6z"/> </svg> </div> <div class="mouse-left"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.4 91" style="enable-background:new 0 0 27.4 91;" xml:space="preserve"> <path linejoin="round" stroke-linecap="round" stroke-miterlimit="10" class="Draw-Frame Animate-Draw" d="M27.4,87.5L27.4,87.5c-13.2,0-23.9-10.7-23.9-23.9v-36c0-13.2,10.7-23.9,23.9-23.9h0"/> </svg> </div> <div class="mouse-right"> <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.4 91" style="enable-background:new 0 0 27.4 91;" xml:space="preserve"> <path linejoin="round" stroke-linecap="round" stroke-miterlimit="10" class="Draw-Frame Animate-Draw" d="M0,3.6L0,3.6c13.2,0,23.9,10.7,23.9,23.9v36c0,13.2-10.7,23.9-23.9,23.9h0"/> </svg> </div>
+				</div>
+				<p>Scroll</p>
+			</div>
+		</div>
+
+		<div id="a_about_us" class="sect-header">
+			<div class="sect-header__title">
+				<h2 class="h2 wow animated fadeInUp">Немного о нас</h2>
+			</div>
+			<div class="sect-header__desc wow animated fadeInUp"  data-wow-delay="0.2s">
+				Наша команда создает стильные и многофункциональные интерьеры под самые разные задачи и предназначения. Мы работаем как с большими, так и с маленькими площадями, как с квартирами, так и с общественными пространствами (офисами , магазинами ,гостиницами). Мы любим свое дело и для нас каждое помещение достойно быть комфортным и уютным, а сложные задачи – это в первую очередь повод для интересных и необычных решений.
+			</div>
+		</div>
+
+		<div id="about-items" class="about-items">
+			<div class="about-item">
+				<div class="gutter"></div>
+				<div class="about-item__inner">
+					<div class="about-item__title">
+						<div class="h2 wow animated fadeInRight" data-wow-delay="0.3s">Вы выбираете нас потому что:</div>
+					</div>
+					<div class="about-item__desc">
+						<ul>
+							<li class="wow animated fadeInRight" data-wow-delay="0.4s">полный цикл работ от проекта до производства и монтажа</li>
+							<li class="wow animated fadeInRight" data-wow-delay="0.5s">у нас в штате классные и творческие дизайнеры</li>
+							<li class="wow animated fadeInRight" data-wow-delay="0.6s">мы готовы ответить на ваши вопросы в любое время</li>
+							<li class="wow animated fadeInRight" data-wow-delay="0.7s">найдем  общий язык с абсолютно любым клиентом</li>
+						</ul>
+					</div>	
+				</div>
+			</div>
+			<div class="about-item wow animated fadeInRight">
+				<img src="img/@2x/about_us/about_us_01.jpg" alt="alt">
+
+			</div>
+			<div class="about-item wow animated fadeInLeft">
+				<img src="img/@2x/about_us/about_us_02.jpg" alt="alt">
+
+			</div>
+			<div class="about-item">
+				<div class="about-item__inner">
+					<div class="about-item__title">
+						<div class="h2 wow animated fadeInLeft" data-wow-delay="0.3s">С нами легко потому что:</div>
+					</div>
+					<div class="about-item__desc">
+						<ul>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.4s">у нас богатый опыт в сфере дизайна интерьера</li>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.5s">мы работаем быстро и качественно</li>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.6s">наши дизайнеры всегда готовы к свежим идеям</li>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.7s">помимо проекта мы можем взять на себя его реализаци</li>
+						</ul>
+					</div>	
+				</div>
+				<div class="gutter"></div>
+			</div>
+		</div>
+
+		<div class="sofa" id="sofa">
+			<div class="sofa__content">
+				<div class="container">
+					<p class="wow animated fadeInUp" data-wow-delay="0.3s">Территориально мы находимся в городе Санкт-Петербурге, в уютном офисе на улице Чугунная 20. Каждый член нашей команды — профессионал в своем деле, способный не просто действовать по готовым стандартам, а предлагать различные необычные решения. Благодаря опыту работы над различными объектами мы прекрасно понимаем специфику различных помещений, их главные аспекты и особенности — знаем всю “кухню” изнутри.</p>
+					<p class="wow animated fadeInUp" data-wow-delay="0.4s">Обращаясь к нам, Вы можете не сомневаться в результате!<br/>
+					Дизайн интерьеров — это не просто работа: это часть нашей жизни. Мы делаем все возможное, чтобы помочь Вам найти то самое, идеальное место. Место для Вас.</p>				
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="sect-projects" id="sect-projects">
+		<div class="sect-header__title">
+			<div class="container">
+				<h2 class="h2 wow animated fadeInUp" data-wow-delay="0.5s">Наши проекты</h2>
+			</div>
+		</div>
+
+		<div class="projects-wrap wow animated fadeInUp" data-wow-delay="0.7s">
+			<div class="projects-items">
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_01.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_01.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_01.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_01.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_02.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_02.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_02.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_02.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_03.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_03.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_03.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_03.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_04.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_04.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_04.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_04.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_05.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_05.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_05.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_05.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_06.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_07.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_08.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>		
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_05.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_05.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_05.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_05.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_06.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_07.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+				<div class="project-item">
+					<img src="img/@2x/projects/project_08.jpg" alt="alt">
+					<div class="project-item__slider">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+						<img class="project-item__slide-img" src="img/@2x/projects/project_06.jpg" alt="alt">
+					</div>
+					<div class="project-item__title">Проект «Yallow rouinds»</div>
+					<div class="project-item__desc">Яркий и неповторимый проект офиса! Основной цвет насышенный и желтый. И любой другой текст описание проекта, который может потребоваться.</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<section id="stages" class="stages">
+		<div class="container">
+			<div class="stages-inner">
+				<div class="stages-content">
+					<div class="h2 wow animated fadeInLeft">
+						Этапы работы
+					</div>
+					<div class="stages-list">
+						<ul>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.4s">Выявляем ваши потребности</li>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.5s">Составляем варианты планировок</li>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.6s">Создаем фотореалистичную 3D-визуализацию</li>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.7s">Проектируем полный комплект чертежей для строителей и конструкторов</li>
+						</ul>
+					</div>
+					<div class="h2 wow animated fadeInLeft">
+						Дополнительно
+					</div>
+					<div class="stages-list">
+						<ul>
+							<li class="wow animated fadeInLeft" data-wow-delay="0.4s">Комплектуем проект всем необходимым</li>
+						<li class="wow animated fadeInLeft" data-wow-delay="0.5s">Реализуем проект полностью сами</li>
+						</ul>
+					</div>
+				</div>
+				<div class="stages-items wow animated fadeInRight" data-wow-delay="0.5s">
+					<div class="stages-item"><img src="img/@2x/stages/stages_01.jpg" alt="alt"></div>
+					<div class="stages-item"><img src="img/@2x/stages/stages_02.jpg" alt="alt"></div>
+					<div class="stages-item"><img src="img/@2x/stages/stages_03.png" alt="alt"></div>
+					<div class="stages-item"><img src="img/@2x/stages/stages_04.jpg" alt="alt"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="specialists" class="specialists">
+		<div class="h2 specialists__title wow animated fadeInUp">Самые классные специалисты</div>
+		<div class="specialists__desc wow animated fadeInUp" data-wow-delay="0.2s">Наши специалисты  - лучшие из лучших! Они всегда готовы прийти к Вам на помощь в вопросах дизайна интерьера. Мы собрали первоклассных асов, которые знают всё и даже больше в том, как распланировать метраж, так и украсить его.</div>
+		<div class="container">
+			<div class="specialists-wrap">
+				<div class="specialists-item">
+					<div class="specialists-item__img wow animated flipInY" data-wow-delay="0.5s"><img src="img/@2x/specialists/specialist_01.jpg" alt="alt"></div>
+					<div class="specialists-item__name">Любовь Терехина</div>
+					<div class="specialists-item__position">Графический дизайнер</div>
+					<div class="specialists-item__speech">Рада приветствовать Вас на сайте нашей компании! Наша команда дизайнеров обязательно вам поможет найти решения ваших интересных задач!</div>
+				</div>
+				<div class="specialists-item">
+					<div class="specialists-item__img wow animated flipInY" data-wow-delay="0.5s"><img src="img/@2x/specialists/specialist_02.jpg" alt="alt"></div>
+					<div class="specialists-item__name">Евгения Кулешова</div>
+					<div class="specialists-item__position">Дизайнер интерьера</div>
+					<div class="specialists-item__speech">Рада приветствовать Вас на сайте нашей компании! Наша команда дизайнеров обязательно вам поможет найти решения ваших интересных задач!</div>
+				</div>
+				<div class="specialists-item">
+					<div class="specialists-item__img wow animated flipInY" data-wow-delay="0.5s"><img src="img/@2x/specialists/specialist_03.jpg" alt="alt"></div>
+					<div class="specialists-item__name">Галина Ермилова</div>
+					<div class="specialists-item__position">Дизайнер интерьера</div>
+					<div class="specialists-item__speech">Рада приветствовать Вас на сайте нашей компании! Наша команда дизайнеров обязательно вам поможет найти решения ваших интересных задач!</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="readytotalk">
+		<div class="readytotalk__title wow animated fadeInUp" data-wow-delay="0.2s">Готовы начать общение?</div>
+		<a class="readytotalk__btn btn  wow animated fadeInUp" data-wow-delay="0.3s">Заказать звонок</a>
+	</section>
+
+
+	<section id="services" class="services">
+		<div class="services__title">
+			<h2 class="h2 wow animated fadeInUp" data-wow-delay="0.2s">Так же наши услуги</h2>
+		</div>
+		<div class="container">
+			<div class="services-wrap">
+				<div class="services-item">
+					<div class="services-item__img wow animated zoomIn" data-wow-duration="1.5s" data-wow-delay="0.2s"><img src="img/@2x/services/service_01.jpg" alt="alt"></div>
+					<div class="services-item__title">Дизайн частных помещений</div>
+					<div class="services-item__desc">Дом человека — его крепость. Это надежное, комфортное место, где он должен чувствовать себя в безопасности...</div>
+					<div class="services-item__desc-full">Дом человека — его крепость. Это надежное, комфортное место, где он должен чувствовать себя в безопасности...</div>
+					<div class="services-item__btn">ПОДРОБНЕЕ &#8594;</div>
+				</div>
+				<div class="services-item">
+					<div class="services-item__img wow animated zoomIn" data-wow-duration="1.5s" data-wow-delay="0.3s"><img src="img/@2x/services/service_02.jpg" alt="alt"></div>
+					<div class="services-item__title">Авторский надзор</div>
+					<div class="services-item__desc">Для того, чтобы по итогу Вы получили именно то, что хотели, наша компания осуществляет Авторский надзор. Мы тщательно...</div>
+					<div class="services-item__desc-full">Дом человека — его крепость. Это надежное, комфортное место, где он должен чувствовать себя в безопасности...</div>
+					<div class="services-item__btn">ПОДРОБНЕЕ &#8594;</div>
+				</div>
+				<div class="services-item">
+					<div class="services-item__img wow animated zoomIn" data-wow-duration="1.5s" data-wow-delay="0.4s"><img src="img/@2x/services/service_03.jpg" alt="alt"></div>
+					<div class="services-item__title">Комплектация светильниками</div>
+					<div class="services-item__desc">Не секрет, что внешний вид помещения — его восприятие, напрямую зависит от освещения. Плохой, неграмотно выстроенный свет...</div>
+					<div class="services-item__desc-full">Дом человека — его крепость. Это надежное, комфортное место, где он должен чувствовать себя в безопасности...</div>
+					<div class="services-item__btn">ПОДРОБНЕЕ &#8594;</div>
+				</div>
+				<div class="services-item">
+					<div class="services-item__img wow animated zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s"><img src="img/@2x/services/service_04.jpg" alt="alt"></div>
+					<div class="services-item__title">Проектирование и изготовление мебели на заказ</div>
+					<div class="services-item__desc">Благодаря сотрудничеству с крупным заводом-изготовителем частной и торгово-офисной мебели в Санкт-Петербурге...</div>
+					<div class="services-item__desc-full">Дом человека — его крепость. Это надежное, комфортное место, где он должен чувствовать себя в безопасности...</div>
+					<div class="services-item__btn">ПОДРОБНЕЕ &#8594;</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="orders">
+		<div class="orders__title">
+			<h2 class="h2">Вы можете заказать у нас</h2>
+		</div>
+		<div class="orders__wrap">
+
+			<div class="orders-item">
+				<div class="orders-item__title wow animated tada" data-wow-delay="0.2s">Пакет «Базовый»</div>
+				<div class="orders-item__list">
+					<ul>
+						<li>планировка помещений</li>
+						<li>коллаж с общим<br/>
+						стилестическим решением</li>
+						<li>комплект чертежей для строителей</li>
+					</ul>
+				</div>
+				<div class="orders-item__price"><span>1500</span> руб. за м<sup>2</sup></div>
+				<a href="" class="orders-item__btn btn">Заказать</a>
+			</div>
+
+			<div class="orders-item">
+				<div class="orders-item__title wow animated tada" data-wow-delay="0.3s">Пакет «Стандартный»</div>
+				<div class="orders-item__list">
+					<ul>
+						<li>планировка помещений</li>
+						<li>3D-визуализация помещений</li>
+						<li>комплект чертежей для строителей</li>
+						<li>спецификация по материалам,<br/>	мебели и сантехнике</li>
+					</ul>
+				</div>
+				<div class="orders-item__price"><span>2500</span> руб. за м<sup>2</sup></div>
+				<a href="" class="orders-item__btn btn">Заказать</a>
+			</div>
+
+			<div class="orders-item">
+				<div class="orders-item__title wow animated tada" data-wow-delay="0.5s">Пакет «Премиум»</div>
+				<div class="orders-item__list">
+					<ul>
+						<li>планировка помещений</li>
+						<li>3D-визуализация помещений</li>
+						<li>комплект чертежей для стироителей</li>
+						<li>спецификация по материалам,<br/>	мебели и сантехнике</li>
+						<li>авторский надзор</li>
+					</ul>
+				</div>
+				<div class="orders-item__price"><span>3500</span> руб. за м<sup>2</sup></div>
+				<a href="" class="orders-item__btn btn">Заказать</a>
+			</div>
+		</div>
+	</section>
+
+	<section id="comments" class="comments">
+		<div class="comments__title">
+			<h2 class="h2 wow animated fadeInUp" data-wow-delay="0.2s">Наша гордость</h2>
+		</div>
+		<div class="comments__quote wow animated fadeInUp" data-wow-delay="0.3s">‘‘</div>
+		<div class="container">
+			<div class="comments__slider wow animated fadeInUp" data-wow-delay="0.4s">
+				<div class="comments__slide">
+					<div class="comments__text">
+						Большое спасибо компании. Очень классные дизайнеры! Благодаря им мой семейный очаг стал ещё уютнее и комфортнее. Появилось очень много деталей, которые я бы никогда бы и не заметил и даже не подумал бы добавлять. СПАСИБО! 
+					</div>
+					<div class="comments__name">— Иван Петрович</div>
+				</div>
+				<div class="comments__slide">
+					<div class="comments__text">
+						Большое спасибо компании. Очень классные дизайнеры! Благодаря им мой семейный очаг стал ещё уютнее и комфортнее. Появилось очень много деталей, которые я бы никогда бы и не заметил и даже не подумал бы добавлять. СПАСИБО! 
+					</div>
+					<div class="comments__name">— Иван Петрович</div>
+				</div>
+				<div class="comments__slide">
+					<div class="comments__text">
+						Большое спасибо компании. Очень классные дизайнеры! Благодаря им мой семейный очаг стал ещё уютнее и комфортнее. Появилось очень много деталей, которые я бы никогда бы и не заметил и даже не подумал бы добавлять. СПАСИБО! 
+					</div>
+					<div class="comments__name">— Иван Петрович</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="trust">	
+		<div class="trust__title wow animated fadeInUp" data-wow-delay="0.2s">Теперь Вы знаете о нас и можете уверенно</div>
+		<div class="trust__btn btn wow animated fadeInUp" data-wow-delay="0.3s">Заказать дизайн</div>
+	</section>
+
+	<section class="form">
+		<div class="form__title">
+			<h2 class="h2 wow animated fadeInUp" data-wow-delay="0.2s">Оформите подписку на нашу рассылку!<br/> Вы будете в курсе наших новостей и выгодных предложений.</h2>
+		</div>
+		<form class="my-form">
+			<div class="my-form__message wow animated fadeInLeft" data-wow-delay="0.3s">
+				<input name="message" type="text" placeholder="Оставьте здесь ваш e-mail">
+			</div>
+			<div class="my-form__submit wow animated fadeInRight" data-wow-delay="0.3s">
+				<input type="submit" value="Подписаться">
+			</div>
+		</form>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-inner">
+				<div class="footer-copy wow animated fadeInLeft" data-wow-delay="0.1s">© Yourplace, 2020 | Политика конфиденциальности</div>
+				<div class="logo footer__logo wow animated pulse" data-wow-delay="1.3s">
+					<img class="logo--dark" src="img/logo.png" alt="You place">
+				</div>
+				<div class="footer-contacts wow animated fadeInRight" data-wow-delay="0.1s">
+					<div class="footer-contacts__title">Контакты</div>
+					<div class="footer-contacts__inner">
+						<div class="footer-contacts__item">
+							<i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+78126421823">+7 812 642-18-23</a>
+						</div>
+						<div class="footer-contacts__item">
+							<i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:sales@yourplace.spb.ru">sales@yourplace.spb.ru</a>
+						</div>
+						<div class="footer-contacts__item">
+							<i class="fa fa-map-marker" aria-hidden="true"></i><a href="">ул. Чугунная, д. 20Б, п. 1Н-47</a>
+						</div>
+					</div>
+					<div class="footer-contacts__btn">
+						<a href="">Нажмите, чтобы увидеть карту проезда</a>
+					</div>
+				</div>
+				<div class="footer-social">
+					<a target="_blank" href=""><svg class="social__vk" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12.145 19.5c3.472 0 2.234-2.198 2.502-2.83-.004-.472-.008-.926.008-1.202.22.062.739.325 1.811 1.367 1.655 1.67 2.078 2.665 3.415 2.665h2.461c.78 0 1.186-.323 1.389-.594.196-.262.388-.722.178-1.438-.549-1.724-3.751-4.701-3.95-5.015.03-.058.078-.135.103-.175h-.002c.632-.835 3.044-4.449 3.399-5.895.001-.002.002-.005.002-.008.192-.66.016-1.088-.166-1.33-.274-.362-.71-.545-1.299-.545h-2.461c-.824 0-1.449.415-1.765 1.172-.529 1.345-2.015 4.111-3.129 5.09-.034-1.387-.011-2.446.007-3.233.036-1.535.152-3.029-1.441-3.029h-3.868c-.998 0-1.953 1.09-.919 2.384.904 1.134.325 1.766.52 4.912-.76-.815-2.112-3.016-3.068-5.829-.268-.761-.674-1.466-1.817-1.466h-2.461c-.998 0-1.594.544-1.594 1.455 0 2.046 4.529 13.544 12.145 13.544zm-8.09-13.499c.217 0 .239 0 .4.457.979 2.883 3.175 7.149 4.779 7.149 1.205 0 1.205-1.235 1.205-1.7l-.001-3.702c-.066-1.225-.512-1.835-.805-2.205l3.508.004c.002.017-.02 4.095.01 5.083 0 1.403 1.114 2.207 2.853.447 1.835-2.071 3.104-5.167 3.155-5.293.075-.18.14-.241.376-.241h2.461.01c-.001.003-.001.006-.002.009-.225 1.05-2.446 4.396-3.189 5.435-.012.016-.023.033-.034.05-.327.534-.593 1.124.045 1.954h.001c.058.07.209.234.429.462.684.706 3.03 3.12 3.238 4.08-.138.022-.288.006-2.613.011-.495 0-.882-.74-2.359-2.23-1.328-1.292-2.19-1.82-2.975-1.82-1.524 0-1.413 1.237-1.399 2.733.005 1.622-.005 1.109.006 1.211-.089.035-.344.105-1.009.105-6.345 0-10.477-10.071-10.636-11.996.055-.005.812-.002 2.546-.003z"/></svg></a>
+					<a target="_blank" href=""><svg class="social__instagram" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> <path d="M363.273,0H148.728C66.719,0,0,66.719,0,148.728v214.544C0,445.281,66.719,512,148.728,512h214.544 C445.281,512,512,445.281,512,363.273V148.728C512,66.719,445.281,0,363.273,0z M472,363.272C472,423.225,423.225,472,363.273,472 H148.728C88.775,472,40,423.225,40,363.273V148.728C40,88.775,88.775,40,148.728,40h214.544C423.225,40,472,88.775,472,148.728 V363.272z"/> <path d="M256,118c-76.094,0-138,61.906-138,138s61.906,138,138,138s138-61.906,138-138S332.094,118,256,118z M256,354 c-54.037,0-98-43.963-98-98s43.963-98,98-98s98,43.963,98,98S310.037,354,256,354z"/> <circle cx="396" cy="116" r="20"/> </svg> </a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<a id="button-to-up"><svg enable-background="new 0 0 96 96" height="96px" id="arrow_up" version="1.1" viewBox="0 0 96 96" width="96px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M52,84V21.656l21.457,21.456c1.561,1.562,4.095,1.562,5.656,0.001c1.562-1.562,1.562-4.096,0-5.658L50.829,9.172l0,0  c-0.186-0.186-0.391-0.352-0.609-0.498c-0.101-0.067-0.21-0.114-0.315-0.172c-0.124-0.066-0.242-0.142-0.373-0.195  c-0.135-0.057-0.275-0.089-0.415-0.129c-0.111-0.033-0.216-0.076-0.331-0.099C48.527,8.027,48.264,8,48.001,8l0,0  c-0.003,0-0.006,0.001-0.009,0.001c-0.259,0.001-0.519,0.027-0.774,0.078c-0.12,0.024-0.231,0.069-0.349,0.104  c-0.133,0.039-0.268,0.069-0.397,0.123c-0.139,0.058-0.265,0.136-0.396,0.208c-0.098,0.054-0.198,0.097-0.292,0.159  c-0.221,0.146-0.427,0.314-0.614,0.501L16.889,37.456c-1.562,1.562-1.562,4.095-0.001,5.657c1.562,1.562,4.094,1.562,5.658,0  L44,21.657V84c0,2.209,1.791,4,4,4S52,86.209,52,84z"/></svg></a>
+
+	<script src="js/scripts.min.js"></script>
 </body>
 </html>
