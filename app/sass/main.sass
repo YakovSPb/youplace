@@ -2,7 +2,8 @@
 @import fonts
 @import libs
 
-
+html
+	overflow-x: hidden
 body
 	font-size: 16px
 	min-width: 320px
@@ -11,8 +12,10 @@ body
 	font-family: 'Raleway', sans-serif
 	overflow-x: hidden
 	color: $text
+	+media-breakpoint-down(lg)
+		font-size: 14px
 
-//Scroll
+// Scroll
 ::-webkit-scrollbar-track
 	background-color: #999
 ::-webkit-scrollbar-corner
@@ -83,13 +86,17 @@ body
 	color: #fff
 	font-weight: normal
 	animation-delay: 1.8s
+	+media-breakpoint-down(lg)
+		font-size: 30px
 	span
 		display: block
 		margin-top: 30px
 		font-size: 105px
 		line-height: 110px
 		font-weight: 900
-
+		+media-breakpoint-down(lg)
+			font-size: 50px
+			line-height: 55px
 h2, .h2
 	font-size: 30px
 	line-height: 40px
@@ -97,6 +104,9 @@ h2, .h2
 	font-weight: normal
 	padding-bottom: 40px
 	margin-bottom: 0
+	+media-breakpoint-down(lg)
+		font-size: 20px
+		padding-bottom: 30px
 
 .btn
 	font-weight: 900
@@ -113,6 +123,10 @@ h2, .h2
 	transition: all .3s ease
 	cursor: pointer
 	margin: 0 auto
+	+media-breakpoint-down(lg)
+		width: 200px
+		height: 50px
+		border: 2px solid #fff
 	&:hover
 		color: #000
 		background: #fff
@@ -131,13 +145,29 @@ h2, .h2
 	&__btn
 		margin-top: 70px
 		animation-delay: 2.2s
+		+media-breakpoint-down(lg)
+			margin-top: 40px
 .header-topline
-	position: absolute
+	position: fixed
 	top: 35px
 	left: 70px
 	display: flex
 	align-items: center
 	z-index: 10000
+	+media-breakpoint-down(lg)
+		position: absolute
+	&--dark-theme
+		.logo--white
+			display: none
+		.logo--dark
+			display: block!important
+		.logo
+			&:before
+				color: #000
+			&:after
+				background: #000
+		.hamburger .hamburger-inner, .hamburger .hamburger-inner::after, .hamburger .hamburger-inner::before
+			background: #000
 	.logo--dark
 		display: none
 	&__active
@@ -189,6 +219,9 @@ h2, .h2
 	position: absolute
 	top: 35px
 	right: 70px
+	+media-breakpoint-down(lg)
+		top: 414px
+		left: 100px
 	a
 		&:after
 			display: none!important
@@ -212,6 +245,24 @@ h2, .h2
 		&:hover
 			fill: #666666
 
+.wrap-inpute label
+	+media-breakpoint-down(lg)
+		margin-bottom: 15px!important
+		padding-top: 0!important
+.close
+	+media-breakpoint-down(lg)
+		font-size: 177px
+		top: 20px
+.hamburger .hamburger-inner, .hamburger .hamburger-inner::after, .hamburger .hamburger-inner::before
+	+media-breakpoint-down(lg)
+		width: 50px
+		height: 5px
+.hamburger-inner::before
+	+media-breakpoint-down(lg)
+		top: 7px
+.hamburger-inner::before
+	+media-breakpoint-down(lg)
+		top: 19px
 .header__content
 	height: 100vh
 	width: 570px
@@ -224,6 +275,7 @@ h2, .h2
 
 // MENU
 .m-menu
+	position: relative
 	margin: 0
 	right: 0
 	top: 0
@@ -240,9 +292,16 @@ h2, .h2
 	transition: .5s ease
 	&__phone
 		margin-top: 100px
+		+media-breakpoint-down(lg)
+			margin-top: 50px
 	&__list
 		list-style-type: none
 		padding: 50px 0 0 338px
+		+media-breakpoint-down(lg)
+			padding: 126px 0 0 26px
+		li
+			+media-breakpoint-down(lg)
+				line-height: 35px
 	a
 		color: #2b2a29
 		text-decoration: none
@@ -263,6 +322,8 @@ h2, .h2
 .mouse-inner
 	opacity: 0
 	transition: opacity 1.5s ease
+	+media-breakpoint-down(sm)
+		display: none
 
 .about-us
 .sect-header
@@ -270,10 +331,14 @@ h2, .h2
 	margin: 0 auto
 	text-align: center
 	padding: 147px 0 170px 0
+	+media-breakpoint-down(lg)
+		padding: 50px 0
 
 .about-items
 	display: flex
 	flex-wrap: wrap
+	+media-breakpoint-down(md)
+		flex-direction: column
 
 .about-item
 	width: 50%
@@ -284,20 +349,41 @@ h2, .h2
 	display: -ms-flex
 	display: -o-flex
 	display: flex
+	+media-breakpoint-down(md)
+		width: 100%
+		height: 390px
+		&:first-child
+			order: 2
+		&:nth-child(2)
+			order: 1
+		&:nth-child(3)
+			order: 3
+		&:nth-child(4)
+			order: 4
 	&:first-child
 		background: #f1f1f1
 	&:last-child
 		text-align: right
+		+media-breakpoint-down(md)
+			text-align: left
 		.about-item__title
 			margin-left: auto
 			width: 282px
+			+media-breakpoint-down(md)
+				margin-left: 0
 		ul
 			padding-left: 0
 			padding-right: 30px
+			+media-breakpoint-down(md)
+				padding-left: 30px
+				padding-right: 0
 			li
 				&:before
 					left: auto
 					right: -30px
+					+media-breakpoint-down(md)
+						right: auto
+						left: -15px
 	img
 		width: 100%
 		height: 100%
@@ -311,6 +397,11 @@ h2, .h2
 		flex-direction: column
 		justify-content: center
 		width: 100%
+		padding-left: 20px
+		padding-right: 20px
+		+media-breakpoint-down(md)
+			padding-left: 10px
+			padding-right: 10px
 	&__title
 		width: 350px
 	&__desc
@@ -328,25 +419,37 @@ h2, .h2
 				width: 2px
 				height: 3px
 				background: #9e9e9e
+				+media-breakpoint-down(lg)
+					left: -15px
 
 .sofa
 	background-color: #fff
 	padding-top: 170px
 	background: url('../img/@2x/about_us/about_us_03.png') no-repeat right -444px top 30px
+	+media-breakpoint-down(lg)
+		padding-top: 10px
+		background: url(../img/@2x/about_us/about_us_03.png) no-repeat right -160px top -10px!important
+		background-size: 506px!important
 	&__content
 		background-color: #f1f1f1
-		padding: 130px 0 120px 0
+		padding: 130px 20px 120px 20px
 		position: relative
 		z-index: -1
+		+media-breakpoint-down(lg)
+			padding: 240px 10px 50px 10px
 		p
 			max-width: 780px
 			margin-bottom: 40px
+			+media-breakpoint-down(lg)
+				max-width: 500px
 			&:last-child
 				margin-bottom: 0
 
 // Projects
 .sect-projects
 	padding-top: 240px
+	+media-breakpoint-down(lg)
+		padding-top: 50px
 	text-align: center
 	.sect-header__title
 		text-align: left
@@ -355,12 +458,19 @@ h2, .h2
 	display: grid
 	grid-template-columns: 1fr 1fr 1fr 1fr
 	grid-gap: 10px
+	+media-breakpoint-down(md)
+		display: block
+	.opactity-active
+		&:after
+			opacity: 0!important
 	.project-item
 		height: 350px
 		cursor: pointer 
 		position: relative
 		overflow: hidden
 		position: relative
+		+media-breakpoint-down(md)
+			height: 240px
 		&:before
 			content: ''
 			position: absolute
@@ -387,6 +497,20 @@ h2, .h2
 			z-index: 1000
 			opacity: 0
 			transition: all 1.5s ease
+			+media-breakpoint-down(md)
+				content: 'tap here'
+				font-size: 12px
+				line-height: 16px
+				left: 50%
+				margin-left: -30px
+				margin-top: -30px
+				padding-top: 8px
+				opacity: 1
+				width: 60px
+				height: 60px
+				border: 5px solid rgba(255,255,255,.4)
+				border-radius: 100%
+				background: rgba(0,0,0,.4)
 		&:hover
 			&:after
 				opacity: 1
@@ -431,8 +555,10 @@ h2, .h2
 // SECTION STAGES
 .stages
 	padding-top: 245px
-	ul
 	padding-left: 30px
+	+media-breakpoint-down(lg)
+		padding-top: 50px
+		padding-left: 0
 	li
 		list-style-type: none
 		position: relative
@@ -448,25 +574,81 @@ h2, .h2
 .stages-inner
 	display: flex
 	justify-content: space-between
+	position: relative
 .stages-content .stages-list
 	padding-bottom: 60px
 .stages-items
 	display: grid
 	grid-template-columns: 1fr 1fr
 	grid-gap: 50px
+	+media-breakpoint-down(lg)
+		grid-gap: 8px
+		margin: 0 auto
 	.stages-item
 		width: 300px
 		height: 230px
 		position: relative
+		+media-breakpoint-down(lg)
+			margin-bottom: 315px
+		+media-breakpoint-down(xs)
+			width: 146px
+			height: 100px
 		img
 			object-fit: cover
 			width: 100%
 			height: 100%
-
+		&:nth-child(3), &:nth-child(4)
+			+media-breakpoint-down(lg)
+				margin-bottom: 200px
+.stages-content__text
+	.h2
+		+media-breakpoint-down(xs)
+			padding-bottom: 10px!important
+	&:first-child
+		+media-breakpoint-down(lg)
+			width: 300px
+			margin-left: -150px
+			position: absolute
+			top: 250px
+			left: 50%
+		+media-breakpoint-down(xs)
+			top: 110px
+.stages-content__text
+	&:last-child
+		+media-breakpoint-down(lg)
+			width: 300px
+			margin-left: -150px
+			position: absolute
+			bottom: -43px
+			left: 50%
+		+media-breakpoint-down(xs)
+			bottom: -20px
 // SECTION specialists
 .specialists
 	padding-top: 250px
 	text-align: center
+	position: relative
+	.opactity-active
+		opacity: 0
+	&__swipe
+		+media-breakpoint-down(lg)
+			width: 130px
+			font-size: 16px
+			line-height: 20px
+			position: absolute
+			bottom: 105px
+			left: 50%
+			margin-left: -73px
+			color: #fff
+			z-index: 10000000000000
+			display: flex
+			justify-content: space-between
+			align-items: center
+			transition: opacity 1s ease
+			i
+				font-size: 50px
+	+media-breakpoint-down(lg)
+		padding-top: 50px
 	&__desc
 		max-width: 920px
 		margin: 0 auto
@@ -475,7 +657,9 @@ h2, .h2
 .specialists-wrap
 	display: flex
 	justify-content: space-between
-
+	+media-breakpoint-down(lg)
+		max-width: 320px
+		margin: 0 auto
 .specialists-item
 	cursor: pointer
 	position: relative
@@ -491,6 +675,15 @@ h2, .h2
 		height: 320px
 		width: 425px
 		position: relative
+		+media-breakpoint-down(lg)
+			width: 100%
+			height: 400px
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+	&__img--big
+		display: none
 		img
 			object-fit: cover
 			width: 100%
@@ -515,11 +708,19 @@ h2, .h2
 	display: flex
 	flex-direction: column
 	justify-content: center
+	+media-breakpoint-down(lg)
+		margin-top: 50px
+	+media-breakpoint-down(sm)
+		height: 188px
 	&__title
 		font-weight: 700
 		color: #fff
 		font-size: 30px
 		margin-bottom: 60px
+		+media-breakpoint-down(sm)
+			font-size: 20px
+			line-height: 25px
+			margin-bottom: 30px
 	&__btn
 		color: #fff!important
 		&:hover
@@ -528,18 +729,31 @@ h2, .h2
 // SECTION services
 .services
 	padding-top: 250px
+	+media-breakpoint-down(lg)
+		padding-top: 50px
 	&__title
 	 text-align: center
 	.services-wrap
 		display: grid
 		grid-template-columns: 1fr 1fr 1fr
 		grid-gap: 50px
+		+media-breakpoint-down(lg)
+			display: block
+			max-width: 320px
+			margin: 0 auto
 		.services-item
 			margin-bottom: 60px
+			+media-breakpoint-down(lg)
+				margin-bottom: 36px
+			&__img_big
+				display: none
 			&__img
 				width: 425px
 				height: 315px
 				position: relative
+				+media-breakpoint-down(lg)
+					width: 100%
+					height: 240px
 				img
 					width: 100%
 					height: 100%
@@ -548,6 +762,8 @@ h2, .h2
 				font-size: 20px
 				color: #000
 				margin: 30px 0 60px 0
+				+media-breakpoint-down(lg)
+					margin: 38px 0 40px 0
 			&__desc
 				line-height: 30px
 				margin-bottom: 30px
@@ -566,27 +782,60 @@ h2, .h2
 // SECTION ORDERS
 .orders
 	padding-bottom: 250px
+	position: relative
+	+media-breakpoint-down(lg)
+		padding-bottom: 45px
+	&__swipe
+		width: 130px
+		font-size: 20px
+		position: absolute
+		top: 390px
+		left: 50%
+		margin-left: -73px
+		color: #000
+		z-index: 10000
+		display: flex
+		justify-content: space-between
+		align-items: center
+		transition: opacity 1s ease
+		i
+			font-size: 50px
+		+media-breakpoint-down(lg)
+			opacity: 1
+.opactity-active
+	opacity: 0
 .orders__title
 	text-align: center
 .orders__wrap
 	display: flex
 	justify-content: space-between
 	padding: 0 15px
+	+media-breakpoint-down(lg)
+		display: block
 .orders-item
 	width: 33%
 	margin: 0 15px  
 	border: 1px solid #9e9e9e
 	padding: 80px 0
 	transition: all .3s ease
+	+media-breakpoint-down(lg)
+		width: 100%
+		height: 100vh
+		padding: 45px 0 20px 0
+		margin: 0
 	&:hover
 		background-color: #e1e3e6
 		border: 1px solid #e1e3e6
 	ul
 		padding-left: 30px
+		+media-breakpoint-down(lg)
+			padding-left: 40px
 	li
 		list-style-type: none
 		position: relative
 		margin-bottom: 50px
+		+media-breakpoint-down(lg)
+			margin-bottom: 30px
 		&:before
 			content: ''
 			position: absolute
@@ -599,22 +848,33 @@ h2, .h2
 		text-align: center
 		font-size: 20px
 		color: #000
-		margin-bottom: 100px    
+		margin-bottom: 100px
+		+media-breakpoint-down(lg)
+			margin-bottom: 55px    
 	&__list
 		max-width: 300px
 		margin: 0 auto
 		height: 410px
 		overflow: hidden
+		+media-breakpoint-down(lg)
+			height: auto
 	&__price
 		text-align: center
 		font-size: 20px
 		color: #000
 		margin-bottom: 70px
+		+media-breakpoint-down(lg)
+			font-size: 14px
+			margin-top: 120px
+			margin-bottom: 40px
 		span
 			font-size: 30px
+			+media-breakpoint-down(lg)
+				font-size: 45px
 	&__btn
 		color: #9e9e9e
 		border-color: #9e9e9e
+		font-size: 15px
 		&:hover
 			border-color: #9e9e9e!important
 			background: #9e9e9e!important
@@ -625,7 +885,14 @@ h2, .h2
 	background: #f1f1f1
 	text-align: center
 	padding: 140px 0
+	.container
+		position: relative
+	+media-breakpoint-down(lg)
+		padding: 50px 0 60px 0
 	&__slider
+	.slick-arrow
+		+media-breakpoint-down(lg)
+			display: none
 	&__text
 		max-width: 880px
 		margin: 0 auto
@@ -648,6 +915,9 @@ h2, .h2
 		font-size: 24px
 		transition: all .3s ease
 		z-index: 10000
+		+media-breakpoint-down(lg)
+			top: -42px
+			left: 7px
 		&:hover
 			color: #000
 	.y_nextArrow
@@ -658,6 +928,9 @@ h2, .h2
 		font-size: 24px
 		transition: all .3s ease
 		z-index: 10000
+		+media-breakpoint-down(lg)
+			top: -42px
+			right: 7px
 		&:hover
 			color: #000
 
@@ -670,6 +943,8 @@ h2, .h2
 	display: flex
 	flex-direction: column  
 	justify-content: center 
+	+media-breakpoint-down(lg)
+		height: 330px
 	&:after
 		content: ''
 		position: absolute
@@ -689,20 +964,30 @@ h2, .h2
 		z-index: 100
 		margin: 0 auto 80px
 		letter-spacing: 1px
+		+media-breakpoint-down(lg)
+			font-size: 20px
+			line-height: 24px
 	&__btn
 		color: #fff
 		border-color: #fff
 		position: relative
 		z-index: 100
+		+media-breakpoint-down(lg)
+			font-size: 15px
 		&:hover
 			border-color: #fff!important
 			background: #fff!important
 			color: #000!important
 
 // FORM SECTION
-.form
+.sect-form
 	padding: 240px 0
 	text-align: center
+	+media-breakpoint-down(lg)
+		padding: 76px 0 
+		.h2
+			font-size: 14px!important
+			line-height: 18px
 	&__title
 		.h2
 			font-size: 20px
@@ -713,10 +998,13 @@ h2, .h2
 	.my-form
 		display: flex
 		justify-content: center
+		+media-breakpoint-down(lg)
+			flex-direction: column
+			align-items: center
 		&__message
 			position: relative
 			max-width: 346px
-			width: 100%
+			width: 100%		
 			input
 				background-color: #f1f1f1
 				height: 60px
@@ -725,6 +1013,8 @@ h2, .h2
 				border-radius: 5px
 				border: 0
 				color: #9e9e9e
+				+media-breakpoint-down(lg)
+					height: 44px
 			&:after
 				font-size: 24px
 				content: '\f003'
@@ -737,6 +1027,8 @@ h2, .h2
 				width: 30px
 				height: 30px
 				z-index: 1000
+				+media-breakpoint-down(lg)
+					top: 9px 
 		&__submit
 			input
 				background: #000
@@ -752,6 +1044,12 @@ h2, .h2
 				width: 140px
 				margin-left: 10px
 				transition: all .3s ease
+				+media-breakpoint-down(lg)
+					font-size: 14px
+					width: 140px
+					height: 30px
+					margin-top: 25px
+					margin-left: 0
 				&:hover
 					background-color: rgba(0,0,0,.8)
 
@@ -760,8 +1058,17 @@ h2, .h2
 	position: relative
 	background: #f1f1f1
 	height: 448px
+	+media-breakpoint-down(lg)
+		padding: 44px 0 40px 0
+		height: auto
 	&__logo
 		position: relative
+		+media-breakpoint-down(lg)
+			margin-right: 0
+			order: -1
+			img
+				width: 86px!important
+				margin-right: 0
 		&:before
 			content: 'interior design'
 			position: absolute
@@ -770,6 +1077,10 @@ h2, .h2
 			color: #2f2e2d
 			font-size: 21px
 			font-weight: 200
+			+media-breakpoint-down(lg)
+				font-size: 11px
+		&:after
+			display: none
 		img
 			width: 168px
 	.container
@@ -779,10 +1090,24 @@ h2, .h2
 	display: flex
 	align-items: center
 	justify-content: space-between
+	+media-breakpoint-down(lg)
+		flex-direction: column
+.footer-copy
+	+media-breakpoint-down(lg)
+		order: 3
+		font-size: 10px
+		margin-top: 30px
 .footer-contacts
+	+media-breakpoint-down(lg)
+		width: 300px
+		padding-top: 65px
+		order: 0
 	&__title
 		color: #000
 		margin-bottom: 50px
+		+media-breakpoint-down(lg)
+			font-size: 20px
+			margin-bottom: 20px
 	&__item
 		display: flex
 		align-items: center
@@ -796,14 +1121,22 @@ h2, .h2
 			margin-right: 15px
 	&__btn
 		padding-left: 40px
+		+media-breakpoint-down(lg)
+			padding-left: 0
+			margin-top: 30px
 		a
 			color: #000
 			text-decoration: underline
 			font-size: 12px
 .footer-social
 	position: absolute
-	top: 172px
-	right: 112px
+	top: 114px
+	right: 54px
+	+media-breakpoint-down(lg)
+		position: absolute!important
+		right: 50%
+		top: 243px
+		margin-right: -142px
 	a
 		width: 65px
 		height: 65px
@@ -814,6 +1147,9 @@ h2, .h2
 		border-radius: 5px
 		margin-bottom: 10px
 		transition: all .3s ease
+		+media-breakpoint-down(lg)
+			width: 35px
+			height: 35px
 		&:hover
 			border: 2px solid #000
 			svg
@@ -842,6 +1178,11 @@ h2, .h2
 	z-index: 1000
 	margin: 30px
 	cursor: pointer
+	+media-breakpoint-down(md)
+		right: -24px
+		bottom: -20px
+		width: 30px
+		height: 30px
 	&:hover
 		svg
 			animation: toup 2s ease-in-out infinite
@@ -851,6 +1192,11 @@ h2, .h2
 		position: absolute
 		top: 12px
 		left: 11px
+		+media-breakpoint-down(md)
+			width: 18px
+			height: 18px
+			top: 5px
+			left: 7px
 	&.show
 		opacity: 1
 		visibility: visible
@@ -866,7 +1212,9 @@ h2, .h2
 
 
 // Modal window
-
+.modal-content
+	+media-breakpoint-down(lg)
+		margin-top: 0
 
 
 // Form
@@ -879,6 +1227,9 @@ h2, .h2
 	width: 100%
 	padding: 40px
 	background-color: #fff  
+	+media-breakpoint-down(lg)
+		padding: 80px 10px 10px 10px
+		height: 100vh
 	.form__p
 		color: #363636
 		text-align: center
@@ -894,6 +1245,9 @@ h2, .h2
 		border: 2px solid #000
 		color: #000
 		transition: all .3s ease
+		+media-breakpoint-down(lg)
+			margin: 15px auto 9px
+			width: 250px
 		&:hover
 			background: #000
 			color: #fff
@@ -905,6 +1259,9 @@ h2, .h2
 		margin: 0
 		padding-bottom: 20px
 		text-align: center
+		+media-breakpoint-down(lg)
+			font-size: 20px
+			color: #000
 	input, textarea
 		border: 2px solid #e2e2e2 
 		padding: 9px 9px 9px 30px
@@ -934,44 +1291,63 @@ h2, .h2
 	label
 		display: block
 		letter-spacing: 4px
-		padding-top: 30px
+		padding-top: 20px
 		text-align: left
+		margin-bottom: 0
+		+media-breakpoint-down(lg)
+			height: 40px
 	.label-text
 		color: #9e9e9e
 		cursor: text
-		font-size: 20px
-		line-height: 20px
+		font-size: 16px
+		line-height: 18px
 		text-transform: uppercase
 		transform: translateY(-34px)
 		transition: all 0.3s
+		+media-breakpoint-down(lg)
+			font-size: 14px
 	.notempty
 		color: gray
 		font-size: 13px
 		transform: translateY(-74px)
+		+media-breakpoint-down(lg)
+			transform: translateY(-60px)!important
 	input
 		width: 100%
 		background-color: transparent
 		border: 0
 		border-bottom: 2px solid #9e9e9e
 		color: #9e9e9e
-		font-size: 26px
+		font-size: 20px
 		letter-spacing: -1px
 		outline: 0
 		padding: 5px 20px
 		text-align: left
 		transition: all 0.3s
+		+media-breakpoint-down(lg)
+			font-size: 14px
 		&:focus 
 		 & + .label-text
 				color: gray
 				font-size: 13px
 				transform: translateY(-74px)
+				+media-breakpoint-down(lg)
+					transform: translateY(-60px)
 
+.radio-title
+	margin-bottom: 20px
+	font-size: 18px
+	color: #000
+	+media-breakpoint-down(lg)
+		font-size: 14px
 .radio-toolbar
 	display: flex
 	justify-content: center
 	flex-wrap: wrap
 	max-width: 440px
 	margin: 0 auto 20px
+	+media-breakpoint-down(lg)
+		margin: 0 auto
 	input[type="radio"]
 		opacity: 0
 		position: fixed
@@ -987,6 +1363,9 @@ h2, .h2
 		cursor: pointer
 		margin-right: 20px
 		margin-bottom: 20px
+		+media-breakpoint-down(lg)
+			padding: 6px 20px
+			font-size: 14px
 .radio-toolbar
 	input[type="radio"]:checked
 		& + label
@@ -1020,8 +1399,11 @@ button.mfp-close
 	cursor: pointer
 	padding-left: 20px
 	max-width: 520px
-	margin: 20px auto 0
+	margin: 0 auto
 	position: relative
+	+media-breakpoint-down(lg)
+		padding-left: 0
+		max-width: 290px
 	label
 		line-height: 16px
 	input
@@ -1037,9 +1419,14 @@ button.mfp-close
 		position: absolute
 		top: 5px
 		left: 27px
+		+media-breakpoint-down(lg)
+			font-size: 10px
+			left: 0px
 	&__text
 		position: relative
 		cursor: pointer
+		+media-breakpoint-down(lg)
+			font-size: 10px
 		a
 			color: $text
 			text-decoration: underline
@@ -1052,6 +1439,11 @@ button.mfp-close
 			height: 25px
 			border-radius: 3px
 			border: 2px solid #9e9e9e
+			+media-breakpoint-down(lg)
+				width: 15px
+				height: 15px
+				border: 1px solid #9e9e9e
+				left: -23px
 // END FORM
 
 // Success Window
@@ -1073,26 +1465,41 @@ button.mfp-close
 .card-window
 	display: flex
 	padding-top: 5px
+	+media-breakpoint-down(md)
+		flex-direction: column
 	&__text
 		width: 50%
 		display: flex
 		flex-direction: column
+		+media-breakpoint-down(md)
+			width: 100%
 	&__title
 		font-size: 30px
 		color: #000
 		padding-top: 100px
 		padding-bottom: 100px
 		text-align: center
+		+media-breakpoint-down(md)
+			padding-top: 70px
+			padding-bottom: 20px
 	&__desc
 		max-width: 400px
 		font-size: 16px
 		line-height: 30px
 		margin: 0 auto
+		+media-breakpoint-down(md)
+			font-size: 14px
+			line-height: 22px
+			padding-bottom: 20px
 	&__promo
 		position: relative
 		width: 50%
 		height: 700px
 		cursor: pointer
+		+media-breakpoint-down(md)
+			width: 100%
+			height: auto
+			padding-bottom: 50px
 	&__swipe
 		width: 130px
 		font-size: 20px
@@ -1114,6 +1521,8 @@ button.mfp-close
 			width: 100%
 			height: 600px
 			object-fit: cover
+			+media-breakpoint-down(md)
+				height: 240px
 	.y_prevArrow
 		font-size: 28px
 		position: absolute
@@ -1162,24 +1571,38 @@ button.mfp-close
 	height: 700px
 	display: flex
 	padding-top: 15px
+	+media-breakpoint-down(lg)
+		flex-direction: column
+		align-items: center
+		height: auto
 	&__hello
 		text-align: center
 		img
 			max-width: 400px
 			margin: 100px auto 0 auto
+			+media-breakpoint-down(lg)
+				margin: 20px auto 0 auto
+				max-width: 200px
 	&__img
 		width: 50%
 		height: 670px
+		+media-breakpoint-down(lg)
+			width: 100%
+			height: 400px
 		img
 			width: 100%
 			height: 100%
 			object-fit: cover
 	&__text
 		width: 50%
+		+media-breakpoint-down(lg)
+			width: 100%
 	&__speach
 		margin-left: 150px
 		max-width: 350px
 		margin-bottom: 50px
+		+media-breakpoint-down(lg)
+			margin: 0 auto 30px auto
 	&__position
 		margin-left: 150px
 
@@ -1187,21 +1610,35 @@ button.mfp-close
 .service-window
 	display: flex
 	height: 700px
+	padding-top: 70px
+	padding-bottom: 20px
+	+media-breakpoint-down(lg)
+		flex-direction: column
+		align-items: center
+		height: auto
 	&__img
 		width: 50%
 		height: 670px
+		+media-breakpoint-down(lg)
+			width: 100%
+			height: 400px
 		img
 			width: 100%
 			height: 100%
 			object-fit: cover
 	&__text
 		width: 50%
+		+media-breakpoint-down(lg)
+			width: 100%
 	&__title
 		font-size: 30px
 		color: #000
 		padding-top: 100px
 		padding-bottom: 100px
 		text-align: center
+		+media-breakpoint-down(lg)
+			padding-top: 20px
+			padding-bottom: 20px
 	&__desc
 		max-width: 400px
 		font-size: 16px
@@ -1212,6 +1649,8 @@ button.mfp-close
 		border: 2px solid #000
 		margin: 100px auto 0 auto
 		height: 60px
+		+media-breakpoint-down(lg)
+			margin: 30px auto 0 auto
 		&:hover
 			background: #000
 			color: #fff
@@ -1221,3 +1660,19 @@ button.mfp-close
 	img
 		width: 100%
 
+
+
+
+// MEDIA
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1500px)
+	.sofa
+		background: url(../img/@2x/about_us/about_us_03.png) no-repeat right -438px top 100px
+		background-size: 82%
+	.services .services-wrap
+		grid-gap: 20px
+	.services .services-wrap .services-item__img
+		width: 380px
+	.footer-social
+		position: static
+/*1400px*/
