@@ -97,7 +97,8 @@ $('.comments__slider').slick({
   nextArrow: '<div class="y_nextArrow"><i class="fa fa-angle-right"></i></div>',
   slidesToShow: 1,
   infinite: true,
-  arrows: true
+  arrows: true,
+  speed: 300
 });
 
 
@@ -148,49 +149,11 @@ function renderForm(title){
   if(title){
     newTitle = title
   }
-  modalWindowHtml = `
-  <form class="form popup-form callback zoom-anim-dialog" id="callback">
-  <h3 class="h3">Заказать ${newTitle}</h3>
-  <div class="wrap-inpute">
-  <div class="wrap-inpute__item">
-  <label>
-  <input type="text" />
-  <div class="label-text">Имя</div>
-  </label>
-  </div>
-  <div class="wrap-inpute__item">
-  <label>
-  <input type="tel" />
-  <div class="label-text">Телефон</div>
-  </label>
-  </div>
-  </div>
-  <div class="text-center">
-  <div class="radio-title">Выберите удобный вариант связи</div>
-  <div class="radio-toolbar">
-  <input type="radio" id="radioPhone" name="radioCall" value="phone" checked>
-  <label for="radioPhone">Телефонный звонок</label>
-  <input type="radio" id="radioViber" name="radioCall" value="viber">
-  <label for="radioViber">Viber</label> 
-  <input type="radio" id="radioWhatsapp" name="radioCall" value="whatsapp">
-  <label for="radioWhatsapp">Whatsapp</label> 
-  <input type="radio" id="radioTelegram" name="radioCall" value="telegram">
-  <label for="radioTelegram">Telegram</label> 
-  </div>
-  </div>
-  <div class="text-center">
-  <div class="input-cheked">
-  <input id="check2" checked="cheched" type="checkbox" name="check" value="check2">
-  <label class="input-cheked__label" for="check2"><span class="input-cheked__text">Я даю согласие на обработку персональных данных</a>.</span></label>
-  </div>
-  <button type="submit" class="btn">Отправить</button>
-  </div>
-  </form>
-  `
+  modalWindowHtml = document.getElementById('hidden').innerHTML
 
   modalBody.innerHTML = modalWindowHtml;
 
-  $("input[type=tel]").mask("+7(999) 999-99-99");
+  $("input[type=tel]").mask("+9(999) 999-99-99");
 // transform for lable input
 $('.form input').blur('change', function(){
   if( !$(this).val() ) {  
@@ -271,6 +234,7 @@ function renderCardWindow(images, title, desc){
      arrows: true,
      autoplay: true,
      autoplaySpeed: 5000,
+     speed: 300
    });
    openModal();
    function swipeDissappea(){
@@ -516,6 +480,7 @@ $('.specialists-wrap:not(.slick-initialized)').slick({
      slidesToShow: 1,
      infinite: true,
      arrows: false,
+     speed: 300
 });
   } else {
     $(".specialists-wrap.slick-initialized").slick("unslick");
@@ -542,6 +507,7 @@ $('.orders__wrap:not(.slick-initialized)').slick({
      slidesToShow: 1,
      infinite: true,
      arrows: false,
+     speed: 300
 });
   } else {
     $(".orders__wrap.slick-initialized").slick("unslick");
